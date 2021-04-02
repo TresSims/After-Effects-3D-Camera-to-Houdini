@@ -36,6 +36,10 @@ class Choser(QtWidgets.QWidget):
         self.ui.keyframeFile.setText(file)
 
     def fileTextSelected(self, text):
+        path = hou.hipFile.path()
+        path = path.split("/")
+        path = "/".join(path[:-1])
+        text = text.replace("$HIP", path)
         self.filename = text
 
     def cameraTextSelected(self, text):
